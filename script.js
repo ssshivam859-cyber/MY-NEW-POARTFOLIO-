@@ -216,7 +216,34 @@ function showComingSoon(event) {
 }
 ```
 
+
+
 function showComingSoon(event) {
     event.preventDefault();
     alert("🚀 VISTAAR.AI — Coming Soon!");
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+
+        menuToggle.querySelector("i").classList.toggle("fa-bars");
+        menuToggle.querySelector("i").classList.toggle("fa-xmark");
+    });
+
+    // Close menu after clicking a link
+    navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+
+            const icon = menuToggle.querySelector("i");
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+        });
+    });
+
+});
